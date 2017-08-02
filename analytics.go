@@ -73,7 +73,7 @@ type Group struct {
 	Traits       map[string]interface{} `json:"traits,omitempty"`
 	AnonymousId  string                 `json:"anonymousId,omitempty"`
 	UserId       string                 `json:"userId,omitempty"`
-	GroupId      string                 `json:"groupId"`
+	GroupId      []string               `json:"groupId"`
 	Message
 }
 
@@ -186,7 +186,7 @@ func (c *Client) Page(msg *Page) error {
 
 // Group buffers an "group" message.
 func (c *Client) Group(msg *Group) error {
-	if msg.GroupId == "" {
+	if len(msg.GroupId) < 1 {
 		return errors.New("You must pass a 'groupId'.")
 	}
 
