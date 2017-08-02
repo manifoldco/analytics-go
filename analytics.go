@@ -187,7 +187,7 @@ func (c *Client) Page(msg *Page) error {
 // Group buffers an "group" message.
 func (c *Client) Group(msg *Group) error {
 	if len(msg.GroupId) < 1 {
-		return errors.New("You must pass a 'groupId'.")
+		return errors.New("You must pass at least one 'groupId'.")
 	}
 
 	if msg.UserId == "" && msg.AnonymousId == "" {
